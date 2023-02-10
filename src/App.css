@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.card .container{
+  display:none;
+}
+
+.card:hover .container{
+   display:block;
+}
+
+
+.scroll {
+          display: block;
+          width: 100%;
+          height: 50vh;
+          overflow-y: scroll;
+      }

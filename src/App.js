@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import NavBar from './navbar';
+import { Routes, Route} from 'react-router-dom';
+import Search from './search';
+import Genres from './genres';
+import Trending from './trending';
+import Home from './home';
+import ViewMore from './viewmore';
+import Genre from './genre';
+import MovieGenres from './moviegenres';
+import TvShowGenres from './tvshowgenre';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+      <NavBar/>
+       <Routes>
+        <Route path="/">
+          <Route index element={<Home/>}/>
+          <Route path=":extra_link1/:extra_link2" element={<ViewMore/>}/>
+        </Route>
+        <Route path="/search/:name" element={<Search/>}/>
+        <Route path="/genre" element={<Genres/>}>
+          <Route path="movie" element={<MovieGenres/>}/>
+          <Route path="tv" element={<TvShowGenres/>}/>
+        </Route>
+        <Route path="/trending" element={<Trending/>}/>
+       </Routes>
+      </>
   );
 }
 
