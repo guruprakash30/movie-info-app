@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const NavBar = () => {
 
@@ -37,8 +37,8 @@ const NavBar = () => {
         </div>
       </div>
       <div className="navbar-end">
-        <a href="/genre/movie" className="has-text-weight-bold navbar-item">BY GENRE</a>
-        <a href="/trending" className="has-text-weight-bold navbar-item">TRENDING</a>
+        <Link to="/genre/movie" className="has-text-weight-bold navbar-item">BY GENRE</Link>
+        <Link to="/trending" className="has-text-weight-bold navbar-item">TRENDING</Link>
         <div className="navbar-item">
         <a className="field has-addons">
       <p className="control">
