@@ -4,7 +4,7 @@ import useFecth from "./usefectch";
 
 const Genre = ({genre,extra}) =>{
 
-    const {data:eachGenre, setData, setUrl} = useFecth('https://api.themoviedb.org/3/discover/'+extra+'/?api_key=05b670c12d1973fe82919a005ef06481&with_genres='+genre.id);
+    const {data:eachGenre, setData, setUrl} = useFecth('https://api.themoviedb.org/3/discover/'+extra+'?api_key=05b670c12d1973fe82919a005ef06481&with_genres='+genre.id);
 
     const {data:language} = useFecth('https://api.themoviedb.org/3/configuration/languages?api_key=05b670c12d1973fe82919a005ef06481');
 

@@ -1,16 +1,17 @@
+
 import { useParams } from "react-router-dom";
-import Review from "./review";
 import useFecth from "./usefectch";
 import Videocontent from "./video";
+
 const Search = () => {
 
     const {name} = useParams();
 
-    const {data:searchResult, isPending, error, setUrl} = useFecth('https://api.themoviedb.org/3/search/movie?api_key=05b670c12d1973fe82919a005ef06481&query='+name)
+    const {data:searchResult, isPending, error, setUrl} = useFecth('https://api.themoviedb.org/3/search/movie?api_key=05b670c12d1973fe82919a005ef06481&query='+name);
 
-   const base_url = 'https://image.tmdb.org/t/p/w500';
+    const base_url = 'https://image.tmdb.org/t/p/w500';
 
-    return (  
+    return (
         <div>{searchResult && searchResult.results.filter(element => element.poster_path!=null && element.title!=null && element.overview!=null).map((res)=>
             <div className="container py-5">
                 <div className="box has-shadow">

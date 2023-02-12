@@ -1,16 +1,18 @@
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavBar = () => {
 
   const [searchformovie,setSearchForMovie]=useState('');
+
+  const navigate = useNavigate();
 
     const handlechange = (event)=>{
       setSearchForMovie(event.target.value);
     }
 
     const handleSearch = ()=>{
-      window.location.href = '/search/'+searchformovie;
+      navigate(`search/${searchformovie}`);
     }
 
     return ( <nav className="navbar is-white has-shadow">
