@@ -18,15 +18,32 @@ const CarouselDesign = ({data,searchData,setData,setUrl,extra_obj,extra_str,extr
         }
 
         if(order===3){
-            const copy = [...data];
-            copy.sort((a,b)=>new Date(a.release_date)-new Date(b.release_date));
-            setData(copy);console.log(data);
+            
+            if(data.size>0 && data[0].first_air_date!=null){console.log(1);
+                const copy = [...data];
+                copy.sort((a,b)=>a.first_air_date.slice(0,4)-b.first_air_date.slice(0,4));
+                setData(copy);console.log(data);
+
+            }
+            else{
+                const copy = [...data];
+                copy.sort((a,b)=>new Date(a.release_date)-new Date(b.release_date));
+                setData(copy);
+            }
         }
 
         if(order===4){
-            const copy = [...data];
-            copy.sort((a,b)=>new Date(b.release_date)-new Date(a.release_date));
-            setData(copy);console.log(data);
+            if(data.size>0 && data[0].first_air_date){
+                const copy = [...data];
+                copy.sort((a,b)=>b.first_air_date.slice(0,4)-a.first_air_date.slice(0,4));
+                setData(copy);
+
+            }
+            else{
+                const copy = [...data];
+                copy.sort((a,b)=>new Date(b.release_date)-new Date(a.release_date));
+                setData(copy);
+            }
         }
 
         if(order===5){
@@ -76,7 +93,7 @@ const CarouselDesign = ({data,searchData,setData,setUrl,extra_obj,extra_str,extr
         
         const res = searchData.find( element => element.english_name.toUpperCase()===searchByUser.toUpperCase());
 
-        if(res)setUrl('https://api.themoviedb.org/3/discover/'+extra+'?api_key=05b670c12d1973fe82919a005ef06481&with_original_language='+res.iso_639_1+"&with_genres="+extra_obj.id);
+        if(res){console.log('https://api.themoviedb.org/3/discover/'+extra+'?api_key=05b670c12d1973fe82919a005ef06481&with_original_language='+res.iso_639_1+"&with_genres="+extra_obj.id);setUrl('https://api.themoviedb.org/3/discover/'+extra+'?api_key=05b670c12d1973fe82919a005ef06481&with_original_language='+res.iso_639_1+"&with_genres="+extra_obj.id);}
       }
 
       const handleTrend = (userChoice) =>{

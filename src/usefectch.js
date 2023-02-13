@@ -8,8 +8,9 @@ const useFecth  = (endpoint) =>{
     const [url,setUrl] = useState(endpoint)
 
 
-    useEffect(()=>{
-        fetch(endpoint).then((res)=>{
+    const request = (requestUrl) =>{
+
+        fetch(requestUrl).then((res)=>{
     
             if(!res.ok)throw Error('could not fetch data');
     
@@ -26,9 +27,17 @@ const useFecth  = (endpoint) =>{
             
             console.log(err);
            })
-    },[endpoint,url]);
+    }
+    
+    useEffect(()=>{
+        request(endpoint);
+    },[endpoint]);
 
-    return { data, isPending, error , setData};
+    useEffect(()=>{
+        request(url);
+    },[url]);
+
+    return { data, isPending, error , setData, setUrl};
 
 }
    
