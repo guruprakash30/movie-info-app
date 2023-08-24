@@ -209,8 +209,8 @@ const CarouselDesign = ({data,searchData,setData,setUrl,extra_obj,extra_str,extr
     </div>
     
 </div>
-</div>
-)}
+</div>)
+}
 </Carousel>
 <div className="level-right">
 <div className="level-item">
